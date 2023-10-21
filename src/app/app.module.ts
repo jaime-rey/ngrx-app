@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { StoreModule } from '@ngrx/store';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode(), name: 'TEST' })
   ],
   providers: [],
   bootstrap: [AppComponent]
